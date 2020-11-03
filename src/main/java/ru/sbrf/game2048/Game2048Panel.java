@@ -28,6 +28,8 @@ public class Game2048Panel extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     game.init();
+                    myWin = false;
+                    myLose = false;
                 }
 
                 try {
@@ -49,6 +51,7 @@ public class Game2048Panel extends JPanel {
                     }
                 } catch (GameOverException gameOverException) {
                     myLose = !game.hasWin();
+                } finally {
                     myWin = game.hasWin();
                 }
 
@@ -103,7 +106,7 @@ public class Game2048Panel extends JPanel {
                 g.drawString("You won!", 68, 150);
             }
             if (myLose) {
-                g.drawString("ru.sbrf.game2048.Game over!", 50, 130);
+                g.drawString("Game over!", 50, 130);
                 g.drawString("You lose!", 64, 200);
             }
             if (myWin || myLose) {
@@ -113,7 +116,6 @@ public class Game2048Panel extends JPanel {
             }
         }
         g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-        g.drawString("Score: " + game.getScore(), 200, 365);
 
     }
 

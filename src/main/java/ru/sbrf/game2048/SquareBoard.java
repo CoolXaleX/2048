@@ -57,18 +57,18 @@ public class SquareBoard<T> extends Board<Key, T> {
     }
 
     @Override
-    public List<Key> getColumn(int i) {
+    public List<Key> getColumn(int j) {
         ArrayList<Key> list = new ArrayList<>();
-        for (int j = 0; j < height; j++) {
+        for (int i = 0; i < height; i++) {
             list.add(getKey(i, j));
         }
         return list;
     }
 
     @Override
-    public List<Key> getRow(int j) {
+    public List<Key> getRow(int i) {
         ArrayList<Key> list = new ArrayList<>();
-        for (int i = 0; i < weigh; i++) {
+        for (int j = 0; j < weigh; j++) {
             list.add(getKey(i, j));
         }
         return list;

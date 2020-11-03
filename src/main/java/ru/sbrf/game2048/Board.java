@@ -30,9 +30,9 @@ abstract public class Board<K, V> {
 
     public abstract void setItem(Key key, V value);
 
-    public abstract List<K> getColumn(int i);
+    public abstract List<K> getColumn(int j);
 
-    public abstract List<K> getRow(int j);
+    public abstract List<K> getRow(int i);
 
     public abstract boolean hasValue(V value);
 
