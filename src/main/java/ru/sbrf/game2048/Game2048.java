@@ -5,10 +5,10 @@ import java.util.*;
 public class Game2048 implements Game {
 
     public static final int GAME_SIZE = 4;
-    public final SquareBoard<Integer> board = new SquareBoard<>(GAME_SIZE);
+    private final SquareBoard<Integer> board = new SquareBoard<>(GAME_SIZE);
 
-    Random random = new Random();
-    GameHelper helper = new GameHelper();
+    private final Random random = new Random();
+    private final GameHelper helper = new GameHelper();
 
     @Override
     public void init() {
@@ -75,7 +75,7 @@ public class Game2048 implements Game {
         if (!oldValues.equals(mergedList)) {
             Iterator<Integer> iter = mergedList.iterator();
             for (Key key : oldKeys) {
-                board.setItem(key, iter.next());
+                board.addItem(key, iter.next());
             }
             return true;
         }

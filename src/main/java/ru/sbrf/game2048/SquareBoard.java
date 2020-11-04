@@ -52,11 +52,6 @@ public class SquareBoard<T> extends Board<Key, T> {
     }
 
     @Override
-    public void setItem(Key key, T value) {
-        board.put(key, value);
-    }
-
-    @Override
     public List<Key> getColumn(int j) {
         ArrayList<Key> list = new ArrayList<>();
         for (int i = 0; i < height; i++) {
