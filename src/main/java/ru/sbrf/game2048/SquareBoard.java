@@ -4,82 +4,54 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SquareBoard<T> extends Board<Key, T> {
+public class SquareBoard extends Board {
 
     public SquareBoard(int size) {
         super(size, size);
     }
 
     @Override
-    public void fillBoard(List<T> list) {
-        if (list.size() != weigh * height) throw new RuntimeException();
-        for (int i = 0; i < weigh; i++) {
-            for (int j = 0; j < height; j++) {
-                board.put(new Key(i, j), list.get(i * height + j));
-            }
-        }
+    public void fillBoard(List<Integer> list) {
+
     }
 
     @Override
     public List<Key> availableSpace() {
-        List<Key> keys = new ArrayList<>();
-        for (Map.Entry<Key, T> entry : board.entrySet()) {
-            if (entry.getValue() == null) {
-                keys.add(entry.getKey());
-            }
-        }
-        return keys;
+        return null;
     }
 
     @Override
-    public void addItem(Key key, T value) {
-        board.put(key, value);
+    public void addItem(Key key, Integer value) {
+
     }
 
     @Override
     public Key getKey(int i, int j) {
-        return board
-                .keySet()
-                .stream()
-                .filter(key -> key.getI() == i && key.getJ() == j)
-                .findFirst()
-                .orElseGet(() -> null);
+        return null;
     }
 
     @Override
-    public T getValue(Key key) {
-        return board.get(key);
+    public Integer getValue(Key key) {
+        return null;
     }
 
     @Override
     public List<Key> getColumn(int j) {
-        ArrayList<Key> list = new ArrayList<>();
-        for (int i = 0; i < height; i++) {
-            list.add(getKey(i, j));
-        }
-        return list;
+       return null;
     }
 
     @Override
     public List<Key> getRow(int i) {
-        ArrayList<Key> list = new ArrayList<>();
-        for (int j = 0; j < weigh; j++) {
-            list.add(getKey(i, j));
-        }
-        return list;
+        return null;
     }
 
     @Override
-    public boolean hasValue(T value) {
-        return board.containsValue(value);
+    public boolean hasValue(Integer value) {
+        return false;
     }
 
     @Override
-    public List<T> getValues(List<Key> keys) {
-        ArrayList<T> list = new ArrayList<>();
-        for (Key key: keys) {
-            list.add(board.get(key));
-        }
-        return list;
+    public List<Integer> getValues(List<Key> keys) {
+        return null;
     }
 }
