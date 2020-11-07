@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SquareBoard<T> extends Board<Key, T> {
+public class SquareBoard extends Board {
 
     public SquareBoard(int size) {
         super(size, size);
     }
 
     @Override
-    public void fillBoard(List<T> list) {
+    public void fillBoard(List<Integer> list) {
         if (list.size() != weigh * height) throw new RuntimeException();
         for (int i = 0; i < weigh; i++) {
             for (int j = 0; j < height; j++) {
@@ -23,7 +23,7 @@ public class SquareBoard<T> extends Board<Key, T> {
     @Override
     public List<Key> availableSpace() {
         List<Key> keys = new ArrayList<>();
-        for (Map.Entry<Key, T> entry : board.entrySet()) {
+        for (Map.Entry<Key, Integer> entry : board.entrySet()) {
             if (entry.getValue() == null) {
                 keys.add(entry.getKey());
             }
@@ -32,7 +32,7 @@ public class SquareBoard<T> extends Board<Key, T> {
     }
 
     @Override
-    public void addItem(Key key, T value) {
+    public void addItem(Key key, Integer value) {
         board.put(key, value);
     }
 
@@ -47,7 +47,7 @@ public class SquareBoard<T> extends Board<Key, T> {
     }
 
     @Override
-    public T getValue(Key key) {
+    public Integer getValue(Key key) {
         return board.get(key);
     }
 
@@ -70,13 +70,13 @@ public class SquareBoard<T> extends Board<Key, T> {
     }
 
     @Override
-    public boolean hasValue(T value) {
+    public boolean hasValue(Integer value) {
         return board.containsValue(value);
     }
 
     @Override
-    public List<T> getValues(List<Key> keys) {
-        ArrayList<T> list = new ArrayList<>();
+    public List<Integer> getValues(List<Key> keys) {
+        ArrayList<Integer> list = new ArrayList<>();
         for (Key key: keys) {
             list.add(board.get(key));
         }
