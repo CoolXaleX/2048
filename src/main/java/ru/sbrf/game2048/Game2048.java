@@ -5,7 +5,7 @@ import java.util.*;
 public class Game2048 implements Game {
 
     public static final int GAME_SIZE = 4;
-    private final SquareBoard<Integer> board = new SquareBoard<>(GAME_SIZE);
+    private final Board<Key, Integer> board = new SquareBoard<>(GAME_SIZE);
 
     private final Random random = new Random();
     private final GameHelper helper = new GameHelper();
@@ -90,7 +90,7 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public SquareBoard<Integer> getGameBoard() {
+    public Board getGameBoard() {
         return board;
     }
 
