@@ -17,16 +17,13 @@ public class Game2048 implements Game {
             list.add(null);
         }
         board.fillBoard(list);
-        try {
-            addItem();
-            addItem();
-        } catch (GameOverException e) {
-            //Не верно инициализировали борд
-        }
+
+        addItem();
+        addItem();
     }
 
     private Integer generateRandomValue() {
-        return Math.random() < 0.9 ? 2 : 4;
+        return random.nextDouble() < 0.9 ? 2 : 4;
     }
 
     @Override
@@ -35,8 +32,7 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void move(Direction direction) throws GameOverException {
-        if (!canMove()) throw new GameOverException();
+    public void move(Direction direction) {
         boolean moved = false;
         switch (direction) {
             case LEFT:
@@ -83,9 +79,8 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void addItem() throws GameOverException {
+    public void addItem() {
         List<Key> emptyKeys = board.availableSpace();
-        if (emptyKeys.isEmpty()) throw new GameOverException();
         board.addItem(emptyKeys.get(random.nextInt(emptyKeys.size())), generateRandomValue());
     }
 
