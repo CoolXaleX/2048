@@ -41,26 +41,26 @@ public class Game2048 implements Game {
         switch (direction) {
             case LEFT:
                 for (int i = 0; i < GAME_SIZE; i++) {
-                    moved |= moveLineAndSetScore(board.getRow(i));
+                    moved |= moveLine(board.getRow(i));
                 }
                 break;
             case RIGHT:
                 for (int i = 0; i < GAME_SIZE; i++) {
                     List<Key> list = board.getRow(i);
                     Collections.reverse(list);
-                    moved |= moveLineAndSetScore(list);
+                    moved |= moveLine(list);
                 }
                 break;
             case UP:
                 for (int j = 0; j < GAME_SIZE; j++) {
-                    moved |= moveLineAndSetScore(board.getColumn(j));
+                    moved |= moveLine(board.getColumn(j));
                 }
                 break;
             case DOWN:
                 for (int j = 0; j < GAME_SIZE; j++) {
                     List<Key> list = board.getColumn(j);
                     Collections.reverse(list);
-                    moved |= moveLineAndSetScore(list);
+                    moved |= moveLine(list);
                 }
                 break;
         }
@@ -69,7 +69,7 @@ public class Game2048 implements Game {
         }
     }
 
-    private boolean moveLineAndSetScore(List<Key> oldKeys) {
+    private boolean moveLine(List<Key> oldKeys) {
         List<Integer> oldValues = board.getValues(oldKeys);
         List<Integer> mergedList = helper.moveAndMergeEqual(oldValues);
         if (!oldValues.equals(mergedList)) {
