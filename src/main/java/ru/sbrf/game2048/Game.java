@@ -8,10 +8,10 @@ public interface Game {
     boolean canMove();
 
     /** Метод делает игровой ход в направлении {@param direction}. */
-    void move(Direction direction) throws GameOverException;
+    void move(Direction direction) throws NotEnoughtSpace;
 
     /** Добавляет новый элемент в игру. */
-    void addItem() throws GameOverException;
+    void addItem() throws NotEnoughtSpace;
 
     /** Получение игрового поля. */
     Board getGameBoard();

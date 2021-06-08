@@ -20,7 +20,7 @@ public class Game2048 implements Game {
         try {
             addItem();
             addItem();
-        } catch (GameOverException e) {
+        } catch (NotEnoughtSpace e) {
             //Не верно инициализировали борд
         }
     }
@@ -35,8 +35,7 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void move(Direction direction) throws GameOverException {
-        if (!canMove()) throw new GameOverException();
+    public void move(Direction direction) throws NotEnoughtSpace {
         boolean moved = false;
         switch (direction) {
             case LEFT:
@@ -83,9 +82,9 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void addItem() throws GameOverException {
+    public void addItem() throws NotEnoughtSpace {
         List<Key> emptyKeys = board.availableSpace();
-        if (emptyKeys.isEmpty()) throw new GameOverException();
+        if (emptyKeys.isEmpty()) throw new NotEnoughtSpace();
         board.addItem(emptyKeys.get(random.nextInt(emptyKeys.size())), generateRandomValue());
     }
 

@@ -32,28 +32,25 @@ public class Game2048Panel extends JPanel {
                     myLose = false;
                 }
 
-                try {
-                    if (!myWin && !myLose) {
-                        switch (e.getKeyCode()) {
-                            case KeyEvent.VK_LEFT:
-                                game.move(Direction.LEFT);
-                                break;
-                            case KeyEvent.VK_RIGHT:
-                                game.move(Direction.RIGHT);
-                                break;
-                            case KeyEvent.VK_DOWN:
-                                game.move(Direction.DOWN);
-                                break;
-                            case KeyEvent.VK_UP:
-                                game.move(Direction.UP);
-                                break;
-                        }
+                if (!myWin && !myLose && game.canMove()) {
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_LEFT:
+                            game.move(Direction.LEFT);
+                            break;
+                        case KeyEvent.VK_RIGHT:
+                            game.move(Direction.RIGHT);
+                            break;
+                        case KeyEvent.VK_DOWN:
+                            game.move(Direction.DOWN);
+                            break;
+                        case KeyEvent.VK_UP:
+                            game.move(Direction.UP);
+                            break;
                     }
-                } catch (GameOverException gameOverException) {
-                    myLose = !game.hasWin();
-                } finally {
-                    myWin = game.hasWin();
                 }
+
+                myWin = game.hasWin();
+                myLose = !myWin;
 
                 repaint();
             }
