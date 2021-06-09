@@ -7,8 +7,8 @@ public interface Game {
     /** Метод проверяет, можем ли мы делать игровой ход. */
     boolean canMove();
 
-    /** Метод делает игровой ход в направлении {@param direction}. */
-    void move(Direction direction) throws NotEnoughtSpace;
+    /** Метод делает игровой ход в направлении {@param direction} и возвращает, совершился ход или нет.*/
+    boolean move(Direction direction);
 
     /** Добавляет новый элемент в игру. */
     void addItem() throws NotEnoughtSpace;

@@ -35,7 +35,7 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void move(Direction direction) throws NotEnoughtSpace {
+    public boolean move(Direction direction) {
         boolean moved = false;
         switch (direction) {
             case LEFT:
@@ -64,8 +64,13 @@ public class Game2048 implements Game {
                 break;
         }
         if (moved) {
-            addItem();
+            try {
+                addItem();
+            } catch (NotEnoughtSpace notEnoughtSpace) {
+                return false;
+            }
         }
+        return true;
     }
 
     private boolean moveLine(List<Key> oldKeys) {
@@ -95,7 +100,7 @@ public class Game2048 implements Game {
 
     @Override
     public boolean hasWin() {
-        return board.hasValue(2048);
+        return board.hasValue(64);
     }
 
 }
