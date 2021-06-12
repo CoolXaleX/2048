@@ -20,7 +20,7 @@ public class Game2048 implements Game {
         try {
             addItem();
             addItem();
-        } catch (NotEnoughtSpace e) {
+        } catch (NotEnoughSpace e) {
             //Не верно инициализировали борд
         }
     }
@@ -66,7 +66,7 @@ public class Game2048 implements Game {
         if (moved) {
             try {
                 addItem();
-            } catch (NotEnoughtSpace notEnoughtSpace) {
+            } catch (NotEnoughSpace notEnoughSpace) {
                 return false;
             }
         }
@@ -87,9 +87,9 @@ public class Game2048 implements Game {
     }
 
     @Override
-    public void addItem() throws NotEnoughtSpace {
+    public void addItem() throws NotEnoughSpace {
         List<Key> emptyKeys = board.availableSpace();
-        if (emptyKeys.isEmpty()) throw new NotEnoughtSpace();
+        if (emptyKeys.isEmpty()) throw new NotEnoughSpace();
         board.addItem(emptyKeys.get(random.nextInt(emptyKeys.size())), generateRandomValue());
     }
 

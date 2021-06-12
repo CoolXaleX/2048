@@ -11,7 +11,7 @@ public interface Game {
     boolean move(Direction direction);
 
     /** Добавляет новый элемент в игру. */
-    void addItem() throws NotEnoughtSpace;
+    void addItem() throws NotEnoughSpace;
 
     /** Получение игрового поля. */
     Board getGameBoard();
