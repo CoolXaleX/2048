@@ -100,7 +100,7 @@ public class Game2048 implements Game {
 
     @Override
     public boolean hasWin() {
-        return board.hasValue(64);
+        return board.hasValue(2048);
     }
 
 }
