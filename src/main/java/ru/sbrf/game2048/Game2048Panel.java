@@ -27,7 +27,11 @@ public class Game2048Panel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    game.init();
+                    try {
+                        game.init();
+                    } catch (NotEnoughSpace notEnoughSpace) {
+
+                    }
                     myWin = false;
                     myLose = false;
                 }
@@ -62,7 +66,11 @@ public class Game2048Panel extends JPanel {
                 repaint();
             }
         });
-        game.init();
+        try {
+            game.init();
+        } catch (NotEnoughSpace notEnoughSpace) {
+
+        }
     }
 
     @Override

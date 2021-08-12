@@ -5,24 +5,24 @@ import java.util.*;
 public class Game2048 implements Game {
 
     public static final int GAME_SIZE = 4;
-    private final Board<Key, Integer> board = new SquareBoard<>(GAME_SIZE);
+    private Board<Key, Integer> board = new SquareBoard<>(GAME_SIZE);
 
     private final Random random = new Random();
-    private final GameHelper helper = new GameHelper();
+    private GameHelper helper = new GameHelper();
 
     @Override
-    public void init() {
+    public void init() throws NotEnoughSpace {
         ArrayList<Integer> list = new ArrayList<>(GAME_SIZE * GAME_SIZE);
         for (int i = 0; i < GAME_SIZE * GAME_SIZE; i++) {
             list.add(null);
         }
         board.fillBoard(list);
-        try {
+//        try {
             addItem();
             addItem();
-        } catch (NotEnoughSpace e) {
-            //Не верно инициализировали борд
-        }
+//        } catch (NotEnoughSpace e) {
+//            //Не верно инициализировали борд
+//        }
     }
 
     private Integer generateRandomValue() {

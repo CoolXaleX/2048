@@ -2,7 +2,7 @@ package ru.sbrf.game2048;
 
 public interface Game {
     /** Метод иницирует начало игры. */
-    void init();
+    void init() throws NotEnoughSpace;
 
     /** Метод проверяет, можем ли мы делать игровой ход. */
     boolean canMove();
